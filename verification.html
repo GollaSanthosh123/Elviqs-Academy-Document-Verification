@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Document Verification | Elviq's Academy
+    </title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        body {
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            min-height: 100vh;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #f8fbff,
+                    #eef5ff
+                );
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            padding: 30px 15px;
+
+            color: #1f2937;
+
+        }
+
+
+        .container {
+
+            width: 100%;
+
+            max-width: 520px;
+
+        }
+
+
+        .card {
+
+            background: #ffffff;
+
+            border-radius: 20px;
+
+            padding: 35px;
+
+            box-shadow:
+                0 15px 45px
+                rgba(
+                    15,
+                    23,
+                    42,
+                    0.10
+                );
+
+            border:
+                1px solid #e5e7eb;
+
+        }
+
+
+        /* =================================================
+           BRAND
+        ================================================= */
+
+        .brand {
+
+            text-align: center;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .logo {
+
+            width: 78px;
+
+            height: 78px;
+
+            margin: 0 auto 12px;
+
+            border-radius: 50%;
+
+            background: #ffffff;
+
+            border:
+                2px solid #2563eb;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            overflow: hidden;
+
+        }
+
+
+        .logo img {
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: contain;
+
+            padding: 5px;
+
+            display: block;
+
+        }
+
+
+        .brand h1 {
+
+            font-size: 25px;
+
+            color: #111827;
+
+            margin-bottom: 5px;
+
+        }
+
+
+        .brand p {
+
+            font-size: 14px;
+
+            color: #2563eb;
+
+            font-weight: 600;
+
+            letter-spacing: 0.3px;
+
+        }
+
+
+        /* =================================================
+           HEADING
+        ================================================= */
+
+        .heading {
+
+            text-align: center;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .heading h2 {
+
+            font-size: 22px;
+
+            color: #111827;
+
+            margin-bottom: 7px;
+
+        }
+
+
+        .heading p {
+
+            font-size: 14px;
+
+            color: #6b7280;
+
+            line-height: 1.5;
+
+        }
+
+
+        /* =================================================
+           FORM
+        ================================================= */
+
+        .form-group {
+
+            margin-bottom: 18px;
+
+        }
+
+
+        .form-group label {
+
+            display: block;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            color: #374151;
+
+            margin-bottom: 7px;
+
+        }
+
+
+        .form-group input,
+        .form-group select {
+
+            width: 100%;
+
+            padding: 13px 14px;
+
+            border:
+                1px solid #d1d5db;
+
+            border-radius: 10px;
+
+            font-size: 15px;
+
+            outline: none;
+
+            transition:
+                0.2s ease;
+
+            background: #ffffff;
+
+        }
+
+
+        .form-group input:focus,
+        .form-group select:focus {
+
+            border-color:
+                #2563eb;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(
+                    37,
+                    99,
+                    235,
+                    0.10
+                );
+
+        }
+
+
+        /* =================================================
+           VERIFY BUTTON
+        ================================================= */
+
+        .verify-btn {
+
+            width: 100%;
+
+            border: none;
+
+            padding: 14px;
+
+            border-radius: 10px;
+
+            background:
+                #2563eb;
+
+            color: #ffffff;
+
+            font-size: 16px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition:
+                0.2s ease;
+
+        }
+
+
+        .verify-btn:hover {
+
+            background:
+                #1d4ed8;
+
+            transform:
+                translateY(-1px);
+
+        }
+
+
+        .verify-btn:disabled {
+
+            background:
+                #93c5fd;
+
+            cursor:
+                not-allowed;
+
+            transform:
+                none;
+
+        }
+
+
+        /* =================================================
+           RESULT
+        ================================================= */
+
+        #result {
+
+            margin-top: 22px;
+
+        }
+
+
+        .success-box {
+
+            background:
+                #f0fdf4;
+
+            border:
+                1px solid #86efac;
+
+            border-radius: 14px;
+
+            padding: 22px;
+
+        }
+
+
+        .success-title {
+
+            text-align: center;
+
+            color:
+                #15803d;
+
+            font-size: 20px;
+
+            font-weight: 800;
+
+            margin-bottom: 18px;
+
+        }
+
+
+        .success-icon {
+
+            width: 48px;
+
+            height: 48px;
+
+            border-radius: 50%;
+
+            background:
+                #22c55e;
+
+            color: white;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            margin:
+                0 auto 10px;
+
+            font-size: 25px;
+
+        }
+
+
+        .details {
+
+            background: #ffffff;
+
+            border-radius: 10px;
+
+            overflow: hidden;
+
+            border:
+                1px solid #dcfce7;
+
+        }
+
+
+        .detail-row {
+
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            gap: 15px;
+
+            padding: 11px 13px;
+
+            border-bottom:
+                1px solid #ecfdf5;
+
+            font-size: 14px;
+
+        }
+
+
+        .detail-row:last-child {
+
+            border-bottom:
+                none;
+
+        }
+
+
+        .detail-label {
+
+            font-weight: 600;
+
+            color: #4b5563;
+
+        }
+
+
+        .detail-value {
+
+            text-align: right;
+
+            color: #111827;
+
+            word-break:
+                break-word;
+
+        }
+
+
+        .verified-text {
+
+            text-align: center;
+
+            margin-top: 15px;
+
+            font-size: 13px;
+
+            color: #166534;
+
+            line-height: 1.5;
+
+        }
+
+
+        /* =================================================
+           ERROR
+        ================================================= */
+
+        .error-box {
+
+            background:
+                #fef2f2;
+
+            border:
+                1px solid #fecaca;
+
+            border-radius: 12px;
+
+            padding: 18px;
+
+            text-align: center;
+
+        }
+
+
+        .error-icon {
+
+            font-size: 30px;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .error-title {
+
+            color:
+                #b91c1c;
+
+            font-size: 18px;
+
+            font-weight: 700;
+
+            margin-bottom: 7px;
+
+        }
+
+
+        .error-message {
+
+            color:
+                #7f1d1d;
+
+            font-size: 14px;
+
+            line-height: 1.5;
+
+        }
+
+
+        /* =================================================
+           LOADING
+        ================================================= */
+
+        .loading {
+
+            text-align: center;
+
+            padding: 15px;
+
+            color:
+                #2563eb;
+
+            font-size: 14px;
+
+        }
+
+
+        /* =================================================
+           FOOTER
+        ================================================= */
+
+        .footer {
+
+            text-align: center;
+
+            margin-top: 20px;
+
+            font-size: 12px;
+
+            color:
+                #6b7280;
+
+        }
+
+
+        /* =================================================
+           MOBILE
+        ================================================= */
+
+        @media (max-width: 500px) {
+
+            .card {
+
+                padding:
+                    25px 20px;
+
+            }
+
+
+            .brand h1 {
+
+                font-size: 22px;
+
+            }
+
+
+            .heading h2 {
+
+                font-size: 20px;
+
+            }
+
+
+            .logo {
+
+                width: 72px;
+
+                height: 72px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <div class="card">
+
+
+        <!-- =============================================
+             ELVIQ'S ACADEMY BRAND
+        ============================================== -->
+
+        <div class="brand">
+
+
+            <div class="logo">
+
+                <img
+                    src="assets/elviq-logo.jpeg"
+                    alt="Elviq's Academy Logo"
+                >
+
+            </div>
+
+
+            <h1>
+                Elviq's Academy
+            </h1>
+
+
+            <p>
+                Learn • Grow • Achieve
+            </p>
+
+
+        </div>
+
+
+        <!-- =============================================
+             HEADING
+        ============================================== -->
+
+        <div class="heading">
+
+            <h2>
+                Document Verification
+            </h2>
+
+
+            <p>
+
+                Verify the authenticity of your
+                Certificate or Offer Letter issued
+                by Elviq's Academy.
+
+            </p>
+
+        </div>
+
+
+        <!-- =============================================
+             VERIFICATION FORM
+        ============================================== -->
+
+        <form
+            id="verificationForm"
+        >
+
+
+            <!-- DOCUMENT TYPE -->
+
+            <div class="form-group">
+
+                <label
+                    for="documentType"
+                >
+                    Document Type
+                </label>
+
+
+                <select
+                    id="documentType"
+                    required
+                >
+
+                    <option value="">
+                        Select Document Type
+                    </option>
+
+
+                    <option value="Certificate">
+                        Certificate
+                    </option>
+
+
+                    <option value="Offer Letter">
+                        Offer Letter
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- FULL NAME -->
+
+            <div class="form-group">
+
+                <label
+                    for="fullName"
+                >
+                    Full Name
+                </label>
+
+
+                <input
+                    type="text"
+                    id="fullName"
+                    placeholder="Enter your full name"
+                    required
+                >
+
+            </div>
+
+
+            <!-- EMAIL -->
+
+            <div class="form-group">
+
+                <label
+                    for="email"
+                >
+                    Email Address
+                </label>
+
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Enter your registered email"
+                    required
+                >
+
+            </div>
+
+
+            <!-- DOCUMENT ID -->
+
+            <div class="form-group">
+
+                <label
+                    for="documentId"
+                >
+                    Certificate ID / Offer Letter ID
+                </label>
+
+
+                <input
+                    type="text"
+                    id="documentId"
+                    placeholder="Example: EA-CERT-001"
+                    required
+                >
+
+            </div>
+
+
+            <!-- VERIFY BUTTON -->
+
+            <button
+                type="submit"
+                class="verify-btn"
+                id="verifyButton"
+            >
+
+                Verify Document
+
+            </button>
+
+
+        </form>
+
+
+        <!-- =============================================
+             RESULT
+        ============================================== -->
+
+        <div id="result"></div>
+
+
+        <!-- =============================================
+             FOOTER
+        ============================================== -->
+
+        <div class="footer">
+
+            ©
+            <span id="year"></span>
+            Elviq's Academy
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+<script>
+
+
+/* =========================================================
+   GOOGLE APPS SCRIPT WEB APP
+========================================================= */
+
+const VERIFICATION_API =
+
+    "https://script.google.com/macros/s/AKfycbzlEl7-5_kEnTyVFf9IQohZ6Duf9qJnMCezlRF0MlYT3V9ATB-wj0zuYh2xhZdSjFZQ/exec";
+
+
+/* =========================================================
+   ELEMENTS
+========================================================= */
+
+const form =
+    document.getElementById(
+        "verificationForm"
+    );
+
+
+const button =
+    document.getElementById(
+        "verifyButton"
+    );
+
+
+const result =
+    document.getElementById(
+        "result"
+    );
+
+
+/* =========================================================
+   CURRENT YEAR
+========================================================= */
+
+document.getElementById(
+    "year"
+).textContent =
+    new Date().getFullYear();
+
+
+/* =========================================================
+   ESCAPE HTML
+========================================================= */
+
+function escapeHtml(value) {
+
+    return String(value || "")
+
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+
+        .replace(
+            /</g,
+            "&lt;"
+        )
+
+        .replace(
+            />/g,
+            "&gt;"
+        )
+
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
+}
+
+
+/* =========================================================
+   FORM SUBMISSION
+========================================================= */
+
+form.addEventListener(
+    "submit",
+    async function(event) {
+
+        event.preventDefault();
+
+
+        const documentType =
+            document
+                .getElementById(
+                    "documentType"
+                )
+                .value
+                .trim();
+
+
+        const fullName =
+            document
+                .getElementById(
+                    "fullName"
+                )
+                .value
+                .trim();
+
+
+        const email =
+            document
+                .getElementById(
+                    "email"
+                )
+                .value
+                .trim();
+
+
+        const documentId =
+            document
+                .getElementById(
+                    "documentId"
+                )
+                .value
+                .trim()
+                .toUpperCase();
+
+
+        if (
+            !documentType ||
+            !fullName ||
+            !email ||
+            !documentId
+        ) {
+
+            return;
+
+        }
+
+
+        /* -------------------------------------------------
+           LOADING
+        ------------------------------------------------- */
+
+        button.disabled =
+            true;
+
+
+        button.textContent =
+            "Verifying...";
+
+
+        result.innerHTML = `
+
+            <div class="loading">
+
+                Checking document details...
+
+            </div>
+
+        `;
+
+
+        try {
+
+
+            /* ---------------------------------------------
+               REQUEST DATA
+            --------------------------------------------- */
+
+            const formData =
+                new URLSearchParams();
+
+
+            formData.append(
+                "action",
+                "verify"
+            );
+
+
+            formData.append(
+                "documentType",
+                documentType
+            );
+
+
+            formData.append(
+                "fullName",
+                fullName
+            );
+
+
+            formData.append(
+                "email",
+                email
+            );
+
+
+            formData.append(
+                "documentId",
+                documentId
+            );
+
+
+            /* ---------------------------------------------
+               SEND TO APPS SCRIPT
+            --------------------------------------------- */
+
+            const response =
+                await fetch(
+                    VERIFICATION_API,
+                    {
+
+                        method: "POST",
+
+                        body: formData
+
+                    }
+                );
+
+
+            const data =
+                await response.json();
+
+
+            /* ---------------------------------------------
+               VERIFIED
+            --------------------------------------------- */
+
+            if (
+                data.success &&
+                data.verified
+            ) {
+
+                const info =
+                    data.data;
+
+
+                result.innerHTML = `
+
+                    <div class="success-box">
+
+
+                        <div class="success-icon">
+
+                            ✓
+
+                        </div>
+
+
+                        <div class="success-title">
+
+                            DOCUMENT VERIFIED
+
+                        </div>
+
+
+                        <div class="details">
+
+
+                            <div class="detail-row">
+
+                                <span class="detail-label">
+                                    Document Type
+                                </span>
+
+                                <span class="detail-value">
+
+                                    ${escapeHtml(
+                                        info.documentType
+                                    )}
+
+                                </span>
+
+                            </div>
+
+
+                            <div class="detail-row">
+
+                                <span class="detail-label">
+                                    Full Name
+                                </span>
+
+                                <span class="detail-value">
+
+                                    ${escapeHtml(
+                                        info.fullName
+                                    )}
+
+                                </span>
+
+                            </div>
+
+
+                            <div class="detail-row">
+
+                                <span class="detail-label">
+                                    Email
+                                </span>
+
+                                <span class="detail-value">
+
+                                    ${escapeHtml(
+                                        info.email
+                                    )}
+
+                                </span>
+
+                            </div>
+
+
+                            <div class="detail-row">
+
+                                <span class="detail-label">
+                                    Domain
+                                </span>
+
+                                <span class="detail-value">
+
+                                    ${escapeHtml(
+                                        info.domain
+                                    )}
+
+                                </span>
+
+                            </div>
+
+
+                            <div class="detail-row">
+
+                                <span class="detail-label">
+                                    Issue Date
+                                </span>
+
+                                <span class="detail-value">
+
+                                    ${escapeHtml(
+                                        info.issueDate
+                                    )}
+
+                                </span>
+
+                            </div>
+
+
+                            <div class="detail-row">
+
+                                <span class="detail-label">
+                                    Document ID
+                                </span>
+
+                                <span class="detail-value">
+
+                                    ${escapeHtml(
+                                        info.documentId
+                                    )}
+
+                                </span>
+
+                            </div>
+
+
+                            <div class="detail-row">
+
+                                <span class="detail-label">
+                                    Status
+                                </span>
+
+                                <span
+                                    class="detail-value"
+                                    style="
+                                        color:#15803d;
+                                        font-weight:700;
+                                    "
+                                >
+
+                                    ✓ Valid
+
+                                </span>
+
+                            </div>
+
+
+                        </div>
+
+
+                        <div class="verified-text">
+
+                            This document has been
+                            successfully verified
+                            against the records of
+                            Elviq's Academy.
+
+                        </div>
+
+
+                    </div>
+
+                `;
+
+
+            }
+
+
+            /* ---------------------------------------------
+               NOT VERIFIED
+            --------------------------------------------- */
+
+            else {
+
+                result.innerHTML = `
+
+                    <div class="error-box">
+
+
+                        <div class="error-icon">
+                            ✕
+                        </div>
+
+
+                        <div class="error-title">
+
+                            VERIFICATION FAILED
+
+                        </div>
+
+
+                        <div class="error-message">
+
+                            ${escapeHtml(
+                                data.message ||
+                                "We could not verify this document."
+                            )}
+
+                            <br><br>
+
+                            Please check your
+                            Full Name, Email and
+                            Document ID and try again.
+
+                        </div>
+
+
+                    </div>
+
+                `;
+
+            }
+
+
+        } catch (error) {
+
+
+            console.error(
+                error
+            );
+
+
+            result.innerHTML = `
+
+                <div class="error-box">
+
+
+                    <div class="error-icon">
+                        ⚠
+                    </div>
+
+
+                    <div class="error-title">
+
+                        CONNECTION ERROR
+
+                    </div>
+
+
+                    <div class="error-message">
+
+                        Unable to connect to the
+                        verification service.
+                        Please try again later.
+
+                    </div>
+
+
+                </div>
+
+            `;
+
+        }
+
+
+        /* -------------------------------------------------
+           RESET BUTTON
+        ------------------------------------------------- */
+
+        button.disabled =
+            false;
+
+
+        button.textContent =
+            "Verify Document";
+
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>
